@@ -1,0 +1,7 @@
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\MiProyecto.exe
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\appsettings.Development.json
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\appsettings.json
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\MiProyecto.dll
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\MiProyecto.deps.json
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\MiProyecto.runtimeconfig.json
+C:\Users\Agustin\Documents\CUATRO 10\PARCIAL 2\Chaparro\Practica 5\Nueva carpeta\MiProyecto\publish\MiProyecto.pdb
