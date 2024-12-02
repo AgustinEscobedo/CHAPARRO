@@ -1,0 +1,1 @@
+raul:pass2:ou=RH,ou=departamentos,cn=Administrador,dc=teolo,dc=acme,dc=com
