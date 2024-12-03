@@ -51,11 +51,15 @@
                 string contraseña = parts[1];
                 string ouPath = parts[2];
 
+                // Imprimir los datos que estamos leyendo
+                Response.Write("Procesando Usuario: '" + usuario + "', Contraseña: '" + contraseña + "'<br>");
+                Response.Write("Buscando OU: '" + ouPath + "'<br>");
+
                 try
                 {
                     // Verificar si la OU existe
                     DirectorySearcher searcher = new DirectorySearcher(ldapConnection);
-                    searcher.Filter = "(ou=" + ouPath + ")";
+                    searcher.Filter = "(distinguishedName=" + ouPath + ")";
                     searcher.PropertiesToLoad.Add("distinguishedName");
                     SearchResult result = searcher.FindOne();
 
