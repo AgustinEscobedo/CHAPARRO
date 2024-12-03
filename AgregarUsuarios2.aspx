@@ -57,24 +57,26 @@
 
                 try
                 {
-                    // Verificar si la OU existe
+                    // Buscar primero la OU principal (RH)
+                    string ouPrincipal = "ou=RH,dc=teolo,dc=acme,dc=com";  // Definir la OU principal
                     DirectorySearcher searcher = new DirectorySearcher(ldapConnection);
-                    searcher.Filter = "(distinguishedName=" + ouPath + ")";
+                    searcher.Filter = "(ou=RH)";
                     searcher.PropertiesToLoad.Add("distinguishedName");
                     SearchResult result = searcher.FindOne();
 
                     if (result == null)
                     {
-                        Response.Write("La OU '" + ouPath + "' no existe en el directorio.<br>");
+                        Response.Write("La OU principal 'RH' no existe en el directorio.<br>");
                         continue;
                     }
                     else
                     {
-                        Response.Write("La OU '" + ouPath + "' encontrada.<br>");
+                        Response.Write("La OU principal 'RH' encontrada.<br>");
                     }
 
-                    // Conectar al servidor LDAP con la OU especificada
-                    DirectoryEntry container = new DirectoryEntry(dominio + "/" + ouPath, "teolo\\Administrador", adminPassword);
+                    // Ahora buscar dentro de la OU 'RH' la sub-OU 'departamentos'
+                    string ouCompleto = "ou=departamentos," + result.Properties["distinguishedName"][0].ToString(); // Aquí usamos el DN de la OU 'RH'
+                    DirectoryEntry container = new DirectoryEntry(dominio + "/" + ouCompleto, "teolo\\Administrador", adminPassword);
 
                     // Crear un nuevo usuario
                     DirectoryEntry nuevoUsuario = container.Children.Add("cn=" + usuario, "user");
@@ -88,7 +90,7 @@
                     nuevoUsuario.Properties["userAccountControl"].Value = 512; // Habilitar cuenta
                     nuevoUsuario.CommitChanges();
 
-                    Response.Write("Usuario '" + usuario + "' creado exitosamente en '" + ouPath + "'.<br>");
+                    Response.Write("Usuario '" + usuario + "' creado exitosamente en '" + ouCompleto + "'.<br>");
                 }
                 catch (Exception ex)
                 {
