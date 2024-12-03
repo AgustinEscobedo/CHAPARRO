@@ -17,10 +17,10 @@
         {
             string adminDN = "cn=Administrador,dc=teolo,dc=acme,dc=com";
             string adminPassword = "Pepe3lPollo..";
-            string dominio = "LDAP://192.168.130.1";
+            string dominio = "LDAP://192.168.130.1"; // Dirección IP del servidor AD
 
             // Intentar conectar al servidor LDAP
-            DirectoryEntry ldapConnection = new DirectoryEntry(dominio, adminDN, adminPassword);
+            DirectoryEntry ldapConnection = new DirectoryEntry(dominio, "teolo\\Administrador", adminPassword);
             try
             {
                 // Verificar la conexión LDAP
@@ -70,7 +70,7 @@
                     }
 
                     // Conectar al servidor LDAP con la OU especificada
-                    DirectoryEntry container = new DirectoryEntry(dominio + "/" + ouPath, adminDN, adminPassword);
+                    DirectoryEntry container = new DirectoryEntry(dominio + "/" + ouPath, "teolo\\Administrador", adminPassword);
 
                     // Crear un nuevo usuario
                     DirectoryEntry nuevoUsuario = container.Children.Add("cn=" + usuario, "user");
